@@ -1,18 +1,18 @@
-import { View, Text } from "react-native";
-
+import { Text } from "react-native";
+import { GlowScreen } from "../src/shared/ui/GlowScreen";
 export default function HomeScreen() {
   return (
-    <View
-      style={{
-        flex: 1,
-        backgroundColor: "#0B0714",
-        justifyContent: "center",
-        alignItems: "center",
-      }}
-    >
-      <Text style={{ color: "white", fontSize: 24 }}>
-        Glowera 
+    <GlowScreen>
+      <Text
+        style={{
+          color: "white",
+          fontSize: 24,
+          textAlign: "center",
+          marginTop: 100,
+        }}
+      >
+        Glowera 🌸
       </Text>
-    </View>
+    </GlowScreen>
   );
 }
