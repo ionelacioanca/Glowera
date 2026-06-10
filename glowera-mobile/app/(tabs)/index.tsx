@@ -1,33 +1,5 @@
-import { Text, View } from "react-native";
-import { useAuth } from "../../src/features/auth/context/AuthProvider";
+import { Redirect } from "expo-router";
 
 export default function HomeScreen() {
-  const { user, isLoading } = useAuth();
-
-  if (isLoading) {
-    return (
-      <View
-        style={{
-          flex: 1,
-          justifyContent: "center",
-          alignItems: "center",
-        }}
-      >
-        <Text>Loading...</Text>
-      </View>
-    );
-  }
-
-  return (
-    <View
-      style={{
-        flex: 1,
-        justifyContent: "center",
-        alignItems: "center",
-      }}
-    >
-      <Text>User:</Text>
-      <Text>{user?.email ?? "Not logged in"}</Text>
-    </View>
-  );
+  return <Redirect href="/enter" />;
 }
