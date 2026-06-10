@@ -1,18 +1,27 @@
-import { Text } from "react-native";
-import { GlowScreen } from "../src/shared/ui/GlowScreen";
+import { Platform, Text, View } from "react-native";
+import { GloweraNebula } from "../../src/shared/ui/GloweraNebula";
+
 export default function HomeScreen() {
-  return (
-    <GlowScreen>
-      <Text
+  if (Platform.OS === "web") {
+    return (
+      <View
         style={{
-          color: "white",
-          fontSize: 24,
-          textAlign: "center",
-          marginTop: 100,
+          flex: 1,
+          backgroundColor: "#0B0714",
+          alignItems: "center",
+          justifyContent: "center",
         }}
       >
-        Glowera 🌸
-      </Text>
-    </GlowScreen>
+        <Text style={{ color: "white", fontSize: 28 }}>Glowera Web Test</Text>
+      </View>
+    );
+  }
+
+  return (
+    <GloweraNebula>
+      <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
+        <Text style={{ color: "white", fontSize: 28 }}>Glowera</Text>
+      </View>
+    </GloweraNebula>
   );
 }
