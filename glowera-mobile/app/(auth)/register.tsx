@@ -8,8 +8,6 @@ import {
   View,
 } from "react-native";
 import { signUpWithEmail } from "../../src/features/auth/services/authService";
-//import { Ionicons } from "@expo/vector-icons";
-import { Eye, EyeClosed } from "lucide-react-native";
 
 export default function RegisterScreen() {
   const [email, setEmail] = useState("");
@@ -116,21 +114,16 @@ export default function RegisterScreen() {
           onPress={() => setShowPassword((prev) => !prev)}
           hitSlop={12}
         >
-          {showPassword ? (
-            <EyeClosed
-              size={20}
-              color="#F8E3EC"
-              strokeWidth={1.75}
-            />
-          ) : (
-            <Eye
-              size={20}
-              color="#F8E3EC"
-              strokeWidth={1.75}
-            />
-          )}
-        </Pressable>
-        
+          <Text
+            style={{
+              color: "#F8E3EC",
+              fontSize: 20,
+              fontWeight: "300",
+            }}
+          >
+            {showPassword ? "✧" : "✦"}
+          </Text>
+      </Pressable>
       </View>
 
       {password.length > 0 && (
