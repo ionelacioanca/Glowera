@@ -8,6 +8,7 @@ import {
   View,
 } from "react-native";
 import { signUpWithEmail } from "../../src/features/auth/services/authService";
+import { router } from "expo-router";
 
 export default function RegisterScreen() {
   const [email, setEmail] = useState("");
@@ -39,6 +40,8 @@ export default function RegisterScreen() {
       setIsLoading(true);
 
       await signUpWithEmail(email.trim(), password);
+
+      router.replace("/welcome");
 
       Alert.alert(
         "Account created",

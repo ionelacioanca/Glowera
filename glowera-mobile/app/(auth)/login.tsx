@@ -22,6 +22,8 @@ export default function LoginScreen() {
 
       await signInWithEmail(email.trim(), password);
 
+      router.replace("/(tabs)");
+
       Alert.alert("Success", "Welcome back!");
     } catch (error: any) {
       Alert.alert("Login failed", error.message);
