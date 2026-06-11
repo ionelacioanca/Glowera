@@ -16,13 +16,13 @@ export default function EnterGloweraScreen() {
         <Text
           style={{
             color: "#FFF8FB",
-            fontSize: 44,
+            fontSize: 32,
             fontFamily: "serif",
-            letterSpacing: 1.5,
-            marginBottom: 14,
-            textShadowColor: "rgba(255, 248, 251, 0.65)",
+            letterSpacing: 1,
+            marginBottom: 18,
+            textShadowColor: "rgba(255, 248, 251, 0.45)",
             textShadowOffset: { width: 0, height: 0 },
-            textShadowRadius: 12,
+            textShadowRadius: 8,
           }}
         >
           Glowera
