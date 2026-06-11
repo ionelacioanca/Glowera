@@ -8,6 +8,7 @@ import {
   View,
 } from "react-native";
 import { signUpWithEmail } from "../../src/features/auth/services/authService";
+import { Ionicons } from "@expo/vector-icons";
 
 export default function RegisterScreen() {
   const [email, setEmail] = useState("");
@@ -113,14 +114,11 @@ export default function RegisterScreen() {
         <Pressable
           onPress={() => setShowPassword((prev) => !prev)}
         >
-          <Text
-            style={{
-              color: "#F8E3EC",
-              fontSize: 16,
-            }}
-          >
-            {showPassword ? "🙈" : "👁"}
-          </Text>
+          <Ionicons
+            name={showPassword ? "eye-off-outline" : "eye-outline"}
+            size={22}
+            color="#F8E3EC"
+          />
         </Pressable>
       </View>
 
