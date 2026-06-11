@@ -12,9 +12,29 @@ import { signUpWithEmail } from "../../src/features/auth/services/authService";
 export default function RegisterScreen() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
+  const hasMinLength = password.length >= 8;
+  const hasUppercase = /[A-Z]/.test(password);
+  const hasLowercase = /[a-z]/.test(password);
+  const hasNumber = /\d/.test(password);
+
+  const isPasswordValid =
+    hasMinLength &&
+    hasUppercase &&
+    hasLowercase &&
+    hasNumber;
+
   async function handleRegister() {
+    if (!isPasswordValid) {
+      Alert.alert(
+        "Invalid password",
+        "Please meet all password requirements."
+      );
+      return;
+    }
+
     try {
       setIsLoading(true);
 
@@ -67,20 +87,100 @@ export default function RegisterScreen() {
         }}
       />
 
-      <TextInput
-        placeholder="Password"
-        placeholderTextColor="#999"
-        value={password}
-        onChangeText={setPassword}
-        secureTextEntry
+      <View
         style={{
           backgroundColor: "rgba(255,255,255,0.08)",
-          color: "white",
-          padding: 16,
           borderRadius: 16,
-          marginBottom: 24,
+          marginBottom: 12,
+          flexDirection: "row",
+          alignItems: "center",
+          paddingHorizontal: 16,
         }}
-      />
+      >
+        <TextInput
+          placeholder="Password"
+          placeholderTextColor="#999"
+          value={password}
+          onChangeText={setPassword}
+          secureTextEntry={!showPassword}
+          style={{
+            flex: 1,
+            color: "white",
+            paddingVertical: 16,
+          }}
+        />
+
+        <Pressable
+          onPress={() => setShowPassword((prev) => !prev)}
+        >
+          <Text
+            style={{
+              color: "#F8E3EC",
+              fontSize: 16,
+            }}
+          >
+            {showPassword ? "🙈" : "👁"}
+          </Text>
+        </Pressable>
+      </View>
+
+      {password.length > 0 && (
+        <View
+          style={{
+            marginBottom: 24,
+            gap: 6,
+          }}
+        >
+          <Text
+            style={{
+              color: hasMinLength ? "#F8DCE8" : "#AFA6B2",
+              fontSize: 13,
+            }}
+          >
+            {hasMinLength ? "✓" : "○"} 8+ characters
+          </Text>
+
+          <Text
+            style={{
+              color: hasUppercase ? "#F8DCE8" : "#AFA6B2",
+              fontSize: 13,
+            }}
+          >
+            {hasUppercase ? "✓" : "○"} 1 uppercase letter
+          </Text>
+
+          <Text
+            style={{
+              color: hasLowercase ? "#F8DCE8" : "#AFA6B2",
+              fontSize: 13,
+            }}
+          >
+            {hasLowercase ? "✓" : "○"} 1 lowercase letter
+          </Text>
+
+          <Text
+            style={{
+              color: hasNumber ? "#F8DCE8" : "#AFA6B2",
+              fontSize: 13,
+            }}
+          >
+            {hasNumber ? "✓" : "○"} 1 number
+          </Text>
+
+          {isPasswordValid && (
+            <Text
+              style={{
+                color: "#F8DCE8",
+                fontSize: 13,
+                marginTop: 6,
+                fontWeight: "600",
+              }}
+            >
+              Password requirements met
+            </Text>
+          )}
+        </View>
+      )}
 
       <Pressable
         onPress={handleRegister}
