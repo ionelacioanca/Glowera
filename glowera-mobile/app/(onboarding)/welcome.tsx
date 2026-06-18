@@ -1,19 +1,76 @@
-import { Text, View } from "react-native";
+import { useState } from "react";
+import {
+  Pressable,
+  SafeAreaView,
+  Text,
+  TextInput,
+  View,
+} from "react-native";
 
-export default function OnboardingWelcomeScreen() {
+export default function OnboardingScreen() {
+  const [displayName, setDisplayName] = useState("");
+
   return (
-    <View
+    <SafeAreaView
       style={{
         flex: 1,
         backgroundColor: "#0B0714",
-        alignItems: "center",
         justifyContent: "center",
         paddingHorizontal: 24,
       }}
     >
-      <Text style={{ color: "white", fontSize: 28, textAlign: "center" }}>
-        Welcome to your glow era 
+      <Text
+        style={{
+          color: "white",
+          fontSize: 28,
+          marginBottom: 12,
+          textAlign: "center",
+        }}
+      >
+        Welcome to Glowera ✨
       </Text>
-    </View>
+
+      <Text
+        style={{
+          color: "#F8DCE8",
+          textAlign: "center",
+          marginBottom: 32,
+        }}
+      >
+        What should Glowria call you?
+      </Text>
+
+      <TextInput
+        value={displayName}
+        onChangeText={setDisplayName}
+        placeholder="Your name"
+        placeholderTextColor="#999"
+        style={{
+          backgroundColor: "rgba(255,255,255,0.08)",
+          color: "white",
+          padding: 16,
+          borderRadius: 16,
+          marginBottom: 24,
+        }}
+      />
+
+      <Pressable
+        style={{
+          backgroundColor: "#F8E3EC",
+          padding: 16,
+          borderRadius: 20,
+        }}
+      >
+        <Text
+          style={{
+            textAlign: "center",
+            color: "#7A4D6D",
+            fontWeight: "700",
+          }}
+        >
+          Continue
+        </Text>
+      </Pressable>
+    </SafeAreaView>
   );
 }
