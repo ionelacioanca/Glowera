@@ -4,8 +4,8 @@ import {
   SafeAreaView,
   Text,
   TextInput,
-  View,
 } from "react-native";
+import { router } from "expo-router";
 
 export default function OnboardingScreen() {
   const [displayName, setDisplayName] = useState("");
@@ -55,6 +55,14 @@ export default function OnboardingScreen() {
       />
 
       <Pressable
+        onPress={() =>
+          router.push({
+            pathname: "/goals",
+            params: {
+              displayName,
+            },
+          })
+        }
         style={{
           backgroundColor: "#F8E3EC",
           padding: 16,
