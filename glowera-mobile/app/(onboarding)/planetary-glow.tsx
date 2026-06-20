@@ -29,11 +29,10 @@ export default function PlanetaryGlowScreen() {
     if (!user || !selectedRegion) return;
 
     await completeOnboarding(user.id, {
+      email: user.email,
       display_name: String(displayName),
       planetary_glow: selectedRegion,
-      goals: goals
-        ? JSON.parse(String(goals))
-        : [],
+      goals: goals ? JSON.parse(String(goals)) : [],
     });
 
     router.replace("/(tabs)");

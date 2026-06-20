@@ -37,16 +37,20 @@ export async function completeOnboarding(
     display_name?: string;
     planetary_glow?: string;
     goals?: string[];
+    email?: string;
   }
 ) {
   const { data, error } = await supabase
     .from("profiles")
-    .update({
-      ...payload,
+    .upsert({
+      id: userId,
+      email: payload.email,
+      display_name: payload.display_name,
+      planetary_glow: payload.planetary_glow,
+      goals: payload.goals ?? [],
       onboarding_completed: true,
       updated_at: new Date().toISOString(),
     })
-    .eq("id", userId)
     .select()
     .single();
 
