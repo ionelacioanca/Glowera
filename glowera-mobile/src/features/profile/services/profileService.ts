@@ -35,7 +35,7 @@ export async function completeOnboarding(
   userId: string,
   payload: {
     display_name?: string;
-    planetary_glow?: string;
+    preferred_realm?: string;
     goals?: string[];
     email?: string;
   }
@@ -46,7 +46,7 @@ export async function completeOnboarding(
       id: userId,
       email: payload.email,
       display_name: payload.display_name,
-      planetary_glow: payload.planetary_glow,
+      preferred_realm: payload.preferred_realm,
       goals: payload.goals ?? [],
       onboarding_completed: true,
       updated_at: new Date().toISOString(),

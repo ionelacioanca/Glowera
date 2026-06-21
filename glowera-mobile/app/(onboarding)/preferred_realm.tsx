@@ -31,7 +31,7 @@ export default function PlanetaryGlowScreen() {
     await completeOnboarding(user.id, {
       email: user.email,
       display_name: String(displayName),
-      planetary_glow: selectedRegion,
+      preferred_realm: selectedRegion,
       goals: goals ? JSON.parse(String(goals)) : [],
     });
 
