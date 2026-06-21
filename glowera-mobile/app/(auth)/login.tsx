@@ -150,7 +150,9 @@ export default function LoginScreen() {
             textAlign: "center",
           }}
         >
-          Don't have an account? Create one
+          <Text>
+            Do not have an account? Create one 
+        </Text>
         </Text>
       </Pressable>
     </SafeAreaView>
