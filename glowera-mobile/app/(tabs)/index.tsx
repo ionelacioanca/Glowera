@@ -1,13 +1,20 @@
 import { Pressable, Text, View } from "react-native";
 import { useAuth } from "../../src/features/auth/context/AuthProvider";
 import { signOut } from "../../src/features/auth/services/authService";
+import { router } from "expo-router";
 
 export default function HomeScreen() {
   const { user } = useAuth();
 
   async function handleLogout() {
+  try {
     await signOut();
+
+    router.replace("/enter");
+  } catch (error) {
+    console.error(error);
   }
+}
 
   return (
     <View
