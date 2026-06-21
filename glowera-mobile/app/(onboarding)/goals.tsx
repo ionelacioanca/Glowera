@@ -83,7 +83,7 @@ export default function GoalsScreen() {
       <Pressable
         onPress={() =>
           router.push({
-            pathname: "/planetary-glow",
+            pathname: "/preferred-realm",
             params: {
               displayName,
               goals: JSON.stringify(selectedGoals),
